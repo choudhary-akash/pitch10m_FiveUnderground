@@ -1,0 +1,94 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f1f1f1;
+    margin: 0;
+  }
+  
+  h3 {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+  
+  #quiz-container {
+    width: 400px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center; 
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+  
+  ol {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .option {
+    margin-bottom: 10px;
+  }
+  
+  .option span {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .option input[type="radio"] {
+    display: none;
+  }
+  
+  .option input[type="radio"] + span {
+    background-color: #fff;
+  }
+  
+  .option input[type="radio"]:checked + span {
+    background-color: #4CAF50;
+    color: #fff;
+  }
+  
+  .submit-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .next {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #ccc;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .next:last-of-type {
+    margin-left: 10px;
+  }
+  
+  .exponent-sentence {
+    font-size: 10px;
+    vertical-align: super;
+  }
+  
+  .nepr{ 
+    padding-left: 50%;
+    color: rgb(8, 3, 33);
+    background-color: rgb(162, 92, 219);
+    box-shadow: rgb(13, 2, 24);
+  }

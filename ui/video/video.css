@@ -1,0 +1,136 @@
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+ body { 
+  margin: -100;
+  padding: -100px; 
+  background-color: #c9f2fb;
+  height: -100%; 
+  overflow-y: visible; 
+  align-content: start;
+}
+  .content {
+    margin-top: 20px;
+  }
+  
+  .action-buttons {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+   .tab {
+    margin-top: 20px;
+  }
+ 
+  .tab button {
+    background-color: #dfeeef;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  } 
+  
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  .tab button.active {
+    background-color: #aaa;
+    color: white;
+  } 
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+  }
+  .video {
+    grid-column: 1 / 2;
+    padding: auto;
+    flex-direction: row;
+    margin-left: auto;
+  }
+
+  .content {
+    grid-column: 3 / 2;
+  }
+  
+  .video-container {
+    display: grid !important;
+    width: 60%; 
+
+
+  }
+  
+  video {
+    width: 100%;
+    height: auto;
+  }
+  
+  .summary {
+    border: 1px solid #a19292;
+    background-color: rgb(230, 242, 242);
+    padding:40px; 
+    margin-bottom: 21%;
+    width: 30%;
+    height: 100%;  
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px; 
+
+    box-sizing: border-box;
+
+    position: absolute;
+    bottom: 286px; 
+
+    background: #F7F7FC; 
+
+    border: 0.5px solid #D9DBE9;
+    border-radius: 0px 0px 12px 12px;
+  }
+
+    .list-item{
+      cursor: pointer;
+      color: #581dbd;
+    }
+
+    .list-content {
+      display: none;
+      color: #984838e8;
+    }
+
+    .expanded {
+      display: block; 
+    }
+    .expand-icon {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin-right: 5px;
+        transform: rotate(0deg);
+        transition: transform 0.3s;  
+        
+      }
+      .expanded .expand-icon {
+        transform: rotate(90deg); 
+      }
+
+      .container {
+        position: relative;
+        margin-bottom: 20px;
+      }
+      .summary.expanded { 
+        height: 100%;
+        flex-direction: row;  
+      }
+
+  
