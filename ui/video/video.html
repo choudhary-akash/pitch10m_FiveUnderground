@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>six_underground</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="video.css">
+</head>
+<body>
+    <p>&lt;&nbsp;&nbsp;Back</p>
+    <div class="container">
+      <div class="video">
+        <!-- https://firebasestorage.googleapis.com/v0/b/il-hackathon-2023.appspot.com/o/videos%2FChemistry%20Video.mp4?alt=media&token=1729f2dc-ac42-4de6-9d42-cd76a7bd955f" controls height="500px" width="700px -->
+            <video src="https://firembasestorage.googleapis.com/v0/b/il-hackathon-2023.appspot.com/o/videos%2FChemistry%20Video.mp4?alt=media&token=1729f2dc-ac42-4de6-9d42-cd76a7bd955f" controls height="500px" width="700px"></video>
+            <button id= "like-button" onclick="handleLike()">👍  </button>
+            <button id="dislike-button" onclick="handleDislike()">👎</button>
+            <h3>Description</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum lectus id purus iaculis ullamcorper. Integer in congue ex, vel tristique dui. Sed eleifend mi vel fringilla bibendum. Mauris tempor magna ac justo pulvinar, in sagittis lectus cursus.</p>
+      </div>
+
+      <div class="content">
+        <div>
+          <div> 
+            <h3>Summary <sup class="exponent-sentence">AI</sup> 
+        
+            </h1>
+            </div>
+                  <ul>
+                    <li>
+                      <div class="list-item" onclick="toggleContent(event)">
+                        <span class="expand-icon"></span>11:11 &nbsp;  Item 1&#9661;
+                      </div>
+                      <div class="list-content">
+                        <p> Content for Item 1</p>
+                        <p>Additional details can be placed here.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="list-item" onclick="toggleContent(event)">
+                        <span class="expand-icon"></span>11:11 &nbsp; Item 2&#9661;
+                      </div>
+                      <div class="list-content">
+                        <p>Content for Item 2</p>
+                        <p>Additional details can be placed here.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="list-item" onclick="toggleContent(event)">
+                        <span class="expand-icon"></span>11:11 &nbsp; Item 3&#9661;
+                      </div>
+                      <div class="list-content">
+                        <p>Content for Item 3</p>
+                        <p>Additional details can be placed here.</p>
+                      </div>
+                    </li>
+                  </ul>
+
+                  <h3>Practices Question</h3>
+
+                  <div>
+                    <h3>Playlist</h3>
+                    <a href="https://example.com/video.mp4">Watch the Video</a>
+
+                    <a href="https://example.com/video.mp4">
+                      <img src="image.jpg" alt="Video Thumbnail">
+                    </a>
+                    <img class="video-thumbnail" src="thumbnail.jpg" alt="Video Thumbnail" onclick="playVideo()">
+              
+                  </div>
+        </div>
+    </div>
+  </div>
+ 
+    <script src="video.js"></script>
+</body>
+</html>
