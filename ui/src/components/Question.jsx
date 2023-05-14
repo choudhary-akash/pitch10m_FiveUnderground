@@ -1,7 +1,18 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Question = ({ question }) => {
+	const navigate = useNavigate();
+
 	console.log(question);
+
+	function goToHints() {
+		navigate("/getHints", {
+			state: {
+				question: question
+			}
+		});
+	}
 
 	return (
 		<div className='question-container'>
@@ -26,7 +37,7 @@ const Question = ({ question }) => {
 			</div>
 			<div className='hints-suggestion'>
 				Need help with this problem? 
-				<button className='hints-button'>
+				<button className='hints-button' onClick={goToHints}>
 					<img src="/assets/head-idea.svg" alt="Thinking head icon" />
 					<span>Ask AI</span>
 				</button>

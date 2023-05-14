@@ -39,6 +39,11 @@ const ViewQuestions = () => {
 					<Question question={questions[0]}></Question>
 				}
 			</div>
+
+			<div className="qn-nav-btns">
+				<button >Previous</button>
+				<button >Next</button>
+			</div>
 		</div>
 	)
 }
