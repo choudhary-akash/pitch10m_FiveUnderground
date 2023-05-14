@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 import '../styles/VideoView.css'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import {duration} from 'moment/moment';
 
 const VideoView = () => {
 	const [video, setVideo] = useState(null);
 	const videoRef = useRef(null);
+	const navigate = useNavigate();
 
 	let { cmsVideoId } = useParams();
 
@@ -23,10 +24,14 @@ const VideoView = () => {
 		videoRef.current.currentTime = seconds;
 	}
 	
+	function goBack() {
+		navigate(-1);
+	}
+	
 
 	return (
 		<div id='video-view'>
-			<button className='back-btn'>
+			<button className='back-btn' onClick={goBack}>
 				<img src="/assets/left-arrow.svg" alt="Left Arrow Icon" />
 				Back
 			</button>		
