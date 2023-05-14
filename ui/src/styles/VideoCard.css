@@ -1,0 +1,43 @@
+.video-card {
+	border-radius: 0.5rem;
+	height: 15rem;
+	width: 17rem;
+	overflow: hidden;
+	box-sizing: border-box;
+	box-shadow: 0px 8px 16px rgba(17, 17, 17, 0.06);
+}
+
+.video-card .video-thumbnail {
+	overflow: hidden;
+	height: 70%;
+}
+
+.video-card .video-description {
+	height: 30%;
+	margin: 5px 10%;
+	font-weight: 500;
+}
+
+.video-card .view-count {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin: 5px 0;
+}
+
+.video-card .view-count span {
+	font-size: 0.8rem;
+}
+
+.video-card .view-count img {
+	height: 0.8rem;
+	margin-right: 5px;
+	width: auto;
+	display: inline;
+}
+
+.video-card img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}

@@ -47,8 +47,13 @@ const videosSchema = new mongoose.Schema(
         duration:{
             type:Number,
             required:true
-        }
-
+        },
+				vttCaptionsUrl: {
+					type: String
+				},
+				timeline: {
+					type: Array
+				}
     })
 
 module.exports = mongoose.model('Videos', videosSchema);

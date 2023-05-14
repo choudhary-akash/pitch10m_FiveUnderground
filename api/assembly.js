@@ -87,32 +87,37 @@ async function exportSubtitles(api_token, transcriptId, format) {
 }
 
 async function main() {
-  // const path = 'C:\\Users\\Admin\\OneDrive - Varsity Education Management Pvt Ltd\\Hackathon-DESKTOP-SJAOSSJ\\CBSE GRADE 6 Zoology - 2.5 mins.mp4';
+  // // const path = 'C:\\Users\\Admin\\OneDrive - Varsity Education Management Pvt Ltd\\Hackathon-DESKTOP-SJAOSSJ\\CBSE GRADE 6 Zoology - 2.5 mins.mp4';
 
-	console.log("Uploading file...");
-  // const uploadUrl = await upload_file(API_TOKEN, path);
-	const uploadUrl = `http://64.227.137.118/assets/videos/maths-197856.mp4`;
+	// console.log("Uploading file...");
+  // // const uploadUrl = await upload_file(API_TOKEN, path);
+	// const uploadUrl = `http://64.227.137.118/assets/videos/maths-197856.mp4`;
 
-  if (!uploadUrl) {
-    console.error(new Error('Upload failed'));
-    return
-  }
+  // if (!uploadUrl) {
+  //   console.error(new Error('Upload failed'));
+  //   return
+  // }
 
-	console.log("Transcribing audio...");
-  // Call the transcribeAudio function to start the transcription process
-	let startTime = new Date();
-  const transcript = await transcribeAudio(API_TOKEN, uploadUrl);
-  let endTime = new Date();
+	// console.log("Transcribing audio...");
+  // // Call the transcribeAudio function to start the transcription process
+	// let startTime = new Date();
+  // const transcript = await transcribeAudio(API_TOKEN, uploadUrl);
+  // let endTime = new Date();
 
-	console.log("Time taken to transcribe: " + (endTime - startTime) + " ms");
+	// console.log("Time taken to transcribe: " + (endTime - startTime) + " ms");
 
-	console.log("Transcription Id: " + transcript.id);
+	// console.log("Transcription Id: " + transcript.id);
+
+	// let transcriptId = transcript.id;
+
+	let transcriptId = '6g1xpndpef-9224-4386-a2e5-3a02613159e8';
+	let subtitleFormat = 'vtt';
 
   // Call the exportSubtitles function with the desired format ('srt' or 'vtt')
-  const subtitles = await exportSubtitles(API_TOKEN, transcript.id, 'srt');
+  const subtitles = await exportSubtitles(API_TOKEN, transcriptId, subtitleFormat);
 
 	// Write the subtitles to a file
-	fs.writeFileSync("transcript.srt", subtitles);
+	fs.writeFileSync(`transcript.${subtitleFormat}`, subtitles);
 }
 
 async function getTranscription(transcriptId, api_token) {
