@@ -1,0 +1,80 @@
+body {
+	overflow-y: hidden;
+}
+
+.conversation-container {
+	height: 100%;
+	display: grid;
+	grid-template-rows: 90% 10%;
+	overflow-y: hidden;
+}
+
+.message-list {
+	max-height: 100%;
+	overflow-y: scroll;
+}
+
+.message-container {
+	border-top: 0.5px solid #D9DBE9;
+	border-bottom: 0.5px solid #D9DBE9;
+}
+
+.message {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	width: 50%;
+	margin: 0 auto;
+	gap: 1rem;
+	padding: 1rem;
+}
+
+.assistant-message {
+	background: #FCFCFC;;
+}
+
+.user-message {
+	background-color: transparent;
+}
+
+.assistant-icon {
+	padding: 0.5rem;
+	background: #F9E2FF;
+	border-radius: 4px;
+}
+
+.user-icon {
+	height: 2rem;
+	width: 2rem;
+}
+
+.question-text {
+	margin: 0;
+}
+
+.ask-input {
+	display: block;
+	padding: 1rem 1rem;
+	width: 50%;
+	margin: 0 auto;
+
+	background: #EFF0F7;
+	/* Grayscale/Line */
+
+	border: 0.5px solid #D9DBE9;
+	/* Drop Shadow Medium */
+
+	box-shadow: 0px 20px 24px rgba(17, 17, 17, 0.06);
+	border-radius: 4px;
+}
+
+.ask-input:active, .ask-input:focus {
+	border: 0;
+}
+
+.loading-dot {
+	width: 5px;
+	height: 5px;
+	background-color: #333;
+	border-radius: 100%;
+}

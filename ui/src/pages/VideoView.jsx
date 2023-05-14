@@ -47,7 +47,7 @@ const VideoView = () => {
 				Back
 			</button>		
 			<div className="video-container">
-				<video src={video?.videoUrl || ''} controls ref={videoRef} autoPlay>
+				<video src={video?.videoUrl || ''} controls ref={videoRef} autoPlay crossOrigin='anonymous'>
 					<track label='English' kind='subtitles' srcLang='en' src={video?.vttCaptionsUrl || ''} default />
 				</video>
 				<div className="timeline">

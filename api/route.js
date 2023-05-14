@@ -10,7 +10,6 @@ const axios = require('axios');
 router.get("/videos",async function (req, res) {
     try {  
         let allData = await VideoModel.find().exec();
-        console.log(allData);
         return res.status(200).send({ status: true, data: allData });
     }
     catch (error) {
@@ -55,6 +54,8 @@ router.post("/getQuestions", async function (req, res) {
 		return res.status(500).send({ status: false, msg: err.message });
 	}
 })
+
+
 
 async function fetchQuestionsFromQB(token, toc) {
     const axios = require('axios');
@@ -123,5 +124,6 @@ async function generateToken() {
     let response = await axios.request(config);
     return response.data.accessToken;
 }
- 
+
+
 module.exports = router;

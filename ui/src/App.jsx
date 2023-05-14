@@ -9,6 +9,7 @@ import AllVideos from "./pages/AllVideos";
 import VideoView from "./pages/VideoView";
 import Question from "./components/Question";
 import ViewQuestions from "./pages/ViewQuestions";
+import AskHints from "./pages/AskHints";
 
 const router = createBrowserRouter([
   {
@@ -24,8 +25,8 @@ const router = createBrowserRouter([
 		element: <ViewQuestions></ViewQuestions>
 	},
 	{
-		path: "getHint",
-
+		path: "getHints",
+		element: <AskHints></AskHints>
 	}
 ]);
 
