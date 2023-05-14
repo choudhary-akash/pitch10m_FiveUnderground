@@ -76,3 +76,19 @@ video {
 	font-weight: 400;
 	border-radius: 500px;
 }
+
+.timeline-topic {
+	list-style: none;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: start;
+	padding: 10px;
+}
+
+.topic-timestamp {
+	margin-left: auto;
+	padding: 3px 5px;
+	background-color: #F4C9FF;
+	color: #9900DF;
+}
