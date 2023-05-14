@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router(); 
-const VideoModel = require('../backend/videoModel'); 
+const VideoModel = require('./videoModel'); 
  
 
 // ============================ -- api -- =============================== //
