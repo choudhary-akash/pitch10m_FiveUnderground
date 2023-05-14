@@ -7,6 +7,8 @@ import {
 import "./styles/index.css";
 import AllVideos from "./pages/AllVideos";
 import VideoView from "./pages/VideoView";
+import Question from "./components/Question";
+import ViewQuestions from "./pages/ViewQuestions";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +18,14 @@ const router = createBrowserRouter([
 	{
 		path: "videos/:cmsVideoId",
 		element: <VideoView></VideoView>
+	},
+	{
+		path: "practiseQuestions",
+		element: <ViewQuestions></ViewQuestions>
+	},
+	{
+		path: "getHint",
+
 	}
 ]);
 

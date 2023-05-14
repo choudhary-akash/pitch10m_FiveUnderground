@@ -27,6 +27,17 @@ const VideoView = () => {
 	function goBack() {
 		navigate(-1);
 	}
+
+	function goToQuestionsPage() {
+		navigate("/practiseQuestions", {
+			state: {
+				subjectId: video.subjectId,
+				chapterId: video.chapterId,
+				topicId: video.topicId,
+				subtopicId: video.subtopicId
+			}
+		});
+	}
 	
 
 	return (
@@ -59,7 +70,7 @@ const VideoView = () => {
 						}
 					</div>
 					<div className='generate-qns-container'>
-						<button>Generate Questions</button>
+						<button onClick={() => goToQuestionsPage()}>Generate Questions</button>
 					</div>
 				</div>
 			</div>
