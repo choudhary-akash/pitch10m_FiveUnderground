@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_KEY = "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";
+const API_KEY = import.meta.env.VITE_OPENAI_KEY;
 
 const BASE_URL = "https://api.openai.com/v1";
 const COMPLETION_URL = BASE_URL + "/completions";

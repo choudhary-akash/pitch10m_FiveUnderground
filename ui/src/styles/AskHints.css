@@ -1,22 +1,28 @@
-body {
-	overflow-y: hidden;
-}
-
 .conversation-container {
 	height: 100%;
 	display: grid;
-	grid-template-rows: 90% 10%;
-	overflow-y: hidden;
+	grid-template-rows: 85% 15%;
+	background-color: #F7F7FC;
 }
 
 .message-list {
 	max-height: 100%;
 	overflow-y: scroll;
+	margin-bottom: 2rem;
 }
 
 .message-container {
-	border-top: 0.5px solid #D9DBE9;
-	border-bottom: 0.5px solid #D9DBE9;
+	border-top: 0.5px solid rgba(217, 219, 233, 0.5);
+	border-bottom: 0.5px solid rgba(217, 219, 233, 0.5);
+	background-color: white;
+}
+
+.message-container:has(.assistant-message) {
+	background-color: #fff;
+}
+
+.message-container:has(.user-message) {
+	background-color: #F7F7FC;
 }
 
 .message {
@@ -27,14 +33,6 @@ body {
 	margin: 0 auto;
 	gap: 1rem;
 	padding: 1rem;
-}
-
-.assistant-message {
-	background: #FCFCFC;;
-}
-
-.user-message {
-	background-color: transparent;
 }
 
 .assistant-icon {
@@ -50,13 +48,20 @@ body {
 
 .question-text {
 	margin: 0;
+	font-weight: 500;
+}
+
+.input-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .ask-input {
 	display: block;
 	padding: 1rem 1rem;
-	width: 50%;
-	margin: 0 auto;
+	width: 50vw;
+	margin: auto auto;
 
 	background: #EFF0F7;
 	/* Grayscale/Line */
@@ -77,4 +82,8 @@ body {
 	height: 5px;
 	background-color: #333;
 	border-radius: 100%;
+}
+
+.back-to-qn-btn {
+	background: none;
 }

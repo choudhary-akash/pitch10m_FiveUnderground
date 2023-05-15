@@ -48,6 +48,7 @@ video {
 	color: white;
 	font-weight: 400;
 	border-radius: 500px;
+	cursor: pointer;
 }
 
 .timeline-topic {

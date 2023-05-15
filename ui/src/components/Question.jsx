@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
-const Question = ({ question }) => {
+const Question = ({ question, questionIndex, totalQuestions }) => {
 	const navigate = useNavigate();
 
 	console.log(question);
@@ -19,7 +19,7 @@ const Question = ({ question }) => {
 			<header className='question-header'>
 				<img src="/assets/chatbot-outline.svg" alt="Bot Icon" />
 				<div>
-					<h3 style={{marginTop: 0}}>Question</h3>
+					<h3 style={{marginTop: 0}}>Question {`${questionIndex + 1} / ${totalQuestions}`}</h3>
 					<p className='question-text' dangerouslySetInnerHTML={{ __html: question.questionText} }>
 					</p>
 				</div>

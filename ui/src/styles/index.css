@@ -2,6 +2,7 @@
 	font-family: 'Montserrat';
 	font-size: 0.9rem;
 	box-sizing: border-box;
+	scroll-behavior: smooth;
 }
 
 body, html {
@@ -14,9 +15,8 @@ body, html {
 
 body {
 	background-color: #fff;
-	display: flex;
-	flex-direction: column;
-	flex: 1;
+	display: grid;
+	grid-template-rows: 10vh 90vh;
 }
 
 nav {

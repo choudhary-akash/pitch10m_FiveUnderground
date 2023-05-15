@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import '../styles/AskHints.css';
 import { chat_completion } from '../util/chatgpt.js';
 import Loader from '../components/Loader';
@@ -7,7 +7,9 @@ import { ThreeDots } from 'react-loader-spinner';
 
 const AskHints = () => {
 	const [conversation, setConversation] = useState([]);
-	const [isAsking, setIsAsking] = useState(false);
+	const navigate = useNavigate();
+	const [isLoading, setIsAsking] = useState(false);
+	const msgListRef = useRef(null);
 	const location = useLocation();
 	const inputRef = useRef(null);
 
@@ -28,8 +30,12 @@ const AskHints = () => {
 		inputEl.value = '';
 	}
 
+	function goBack() {
+		navigate(-1);
+	}
+
 	useEffect(() => {
-		console.log(conversation);
+		msgListRef.current.scrollTo(0, msgListRef.current.scrollHeight);
 
 		if (conversation[conversation.length - 1]?.role === 'user') {
 			console.log('Calling chat gpt...');
@@ -74,9 +80,15 @@ const AskHints = () => {
 
 	return (
 		<div className='conversation-container'>
-			<div className="message-list">
+			<div className="message-list" ref={msgListRef}>
+				<div style={{margin: '0 10%'}}>
+					<button className='back-btn' onClick={goBack}>
+						<img src="/assets/left-arrow.svg" alt="Left Arrow Icon" />
+						Back To Question
+					</button>
+				</div>
 				<div className="message-container">
-					<div className="message bot-message">
+					<div className="message assistant-message">
 						<img src="/assets/chatbot-outline.svg" className='assistant-icon' alt="Bot Icon" />
 						<div>
 							<h3 style={{marginTop: 0}}>Question</h3>
@@ -87,7 +99,7 @@ const AskHints = () => {
 				</div>
 
 				<div className="message-container">
-					<div className="message bot-message">
+					<div className="message assistant-message">
 						<img src="/assets/chatbot-outline.svg" className='assistant-icon' alt="Bot Icon" />
 
 						<div>
@@ -114,19 +126,19 @@ const AskHints = () => {
 				}
 
 				{
-					isAsking && 
+					isLoading && 
 					<div className="message-container">
 						<div className="message">
-						<ThreeDots 
-							height="30" 
-							width="30" 
-							radius="9"
-							color="#3C8DCB" 
-							ariaLabel="three-dots-loading"
-							wrapperStyle={{}}
-							wrapperClassName=""
-							visible={true}
-						/>
+							<ThreeDots 
+								height="30" 
+								width="30" 
+								radius="9"
+								color="#3C8DCB" 
+								ariaLabel="three-dots-loading"
+								wrapperStyle={{}}
+								wrapperClassName=""
+								visible={true}
+							/>
 
 						</div>
 					</div>
@@ -135,7 +147,7 @@ const AskHints = () => {
 
 			<div className='input-container'>
 				<form onSubmit={handleInput}>
-					<input type="text" disabled={isAsking} className='ask-input' placeholder='Send message' ref={inputRef} />
+					<input type="text" disabled={isLoading} className='ask-input' placeholder='Send message' ref={inputRef} />
 				</form>
 			</div>
 		</div>

@@ -62,8 +62,8 @@ const VideoView = () => {
 									<span className='topic-name'>
 										{timelineEl.topic}
 									</span>
-									<span className='topic-timestamp' style={{cursor: 'pointer'}} onClick={() => jumpToTime(timelineEl.timestamp/1000)}>
-										{String(duration(timelineEl.timestamp, 'milliseconds').minutes()).padStart(2, '0') + ":" + String(duration(timelineEl.timestamp, 'milliseconds').seconds()).padStart(2, '0')}
+									<span className='topic-timestamp' style={{cursor: 'pointer'}} onClick={() => jumpToTime(duration(timelineEl.timestamp).asSeconds())}>
+										{String(duration(timelineEl.timestamp).minutes()).padStart(2, '0') + ":" + String(duration(timelineEl.timestamp).seconds()).padStart(2, '0')}
 									</span>
 								</div>	
 							)
