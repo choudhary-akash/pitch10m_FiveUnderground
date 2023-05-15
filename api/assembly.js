@@ -1,7 +1,10 @@
 const fs = require("fs");
 const axios = require("axios");
 
-const API_TOKEN = '0a3d4fa6ab074d56a8c816332aba5666';
+// Load env variables
+require("dotenv").config();
+
+const API_TOKEN = process.env.ASSEMBLYAI_KEY;
 
 // Function to upload a local file to the AssemblyAI API
 async function upload_file(api_token, path) {
@@ -91,7 +94,7 @@ async function main() {
 
 	// console.log("Uploading file...");
   // // const uploadUrl = await upload_file(API_TOKEN, path);
-	// const uploadUrl = `http://64.227.137.118/assets/videos/maths-197856.mp4`;
+	// const uploadUrl = `http://64.227.137.118/assets/videos/botany-146083.mp4`;
 
   // if (!uploadUrl) {
   //   console.error(new Error('Upload failed'));
@@ -111,13 +114,15 @@ async function main() {
 	// let transcriptId = transcript.id;
 
 	let transcriptId = '6g1xpndpef-9224-4386-a2e5-3a02613159e8';
-	let subtitleFormat = 'vtt';
+	// let subtitleFormat = 'vtt';
 
   // Call the exportSubtitles function with the desired format ('srt' or 'vtt')
-  const subtitles = await exportSubtitles(API_TOKEN, transcriptId, subtitleFormat);
+  const vttCaptions = await exportSubtitles(API_TOKEN, transcriptId, 'vtt');
+  const srtCaptions = await exportSubtitles(API_TOKEN, transcriptId, 'srt');
 
 	// Write the subtitles to a file
-	fs.writeFileSync(`transcript.${subtitleFormat}`, subtitles);
+	fs.writeFileSync(`transcript.srt`, srtCaptions);
+	fs.writeFileSync(`transcript.vtt`, vttCaptions);
 }
 
 async function getTranscription(transcriptId, api_token) {

@@ -1,12 +1,17 @@
 const fs = require("fs");
 const axios = require("axios");
+const moment = require("moment");
 
-const API_KEY = "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";
+// Load env variables
+require("dotenv").config();
+
+
+const API_KEY = process.env.OPENAI_KEY;
 
 const BASE_URL = "https://api.openai.com/v1";
 const COMPLETION_URL = BASE_URL + "/completions";
 const CHAT_COMPLETION_URL = BASE_URL + "/chat/completions";
-const FILE_PATH = "transcripts/chemistry_organic.srt";
+const FILE_PATH = "maths-197856.srt";
 
 const chat_messages = [];
 
@@ -45,8 +50,8 @@ async function chat_completion(prompt, config) {
 		model: "gpt-3.5-turbo",
 		messages: chat_messages,
 		max_tokens: config.maxTokens ?? 500,
-		temperature: 0,
-		top_p: 1,
+		temperature: 0.49,
+		top_p: 0.49,
 		n: 1,
 		presence_penalty: 0,
 		frequency_penalty: 0,
@@ -119,14 +124,27 @@ async function feedTranscript() {
 
 async function summarize() {
 	// Instruct chat gpt to summarize the previously fed transcript
-	const prompt = `Read and understand the above timestamped text shared with you in parts and then distribute them into broad topics in one liners and along with the starting timestamp of the topic in milliseconds. In your answer, only send a json array of objects where each object contains two fields - 'topic' and 'timestamp'. Don't include anything else in your response. If your response exceeds 3000 tokens, then send it in multiple responses of around 3000 tokens. `;
+	const prompt = `Read and understand the above timestamped text in .srt format shared with you in parts and then distribute them into broad topics in one liners and along with the starting timestamp of the topic. In your answer, only send a json array of objects where each object contains two fields - 'topic' and 'timestamp'. Send the topics as string and the timestamps as string in HH:MM:SS.SSS format. Don't include anything else in your response. `;
 
 	console.log("Fetching topics from transcript...")
-	let completionRes = await chat_completion(prompt, {maxTokens: 1});
+	let completionRes = await chat_completion(prompt, {maxTokens: 250});
 
-	let jsonStr = (completionRes.choices[0].message.content.split('```'))[1];
+	let responseContent = String(completionRes.choices[0].message.content);
 
-	let topicTimestamps = JSON.parse(jsonStr);
+	let topicTimestamps;
+	let jsonStr;
+
+	if (responseContent.includes('```')) {
+		jsonStr = responseContent.split('```')[1];
+	} else {
+		jsonStr = responseContent;
+	}
+	
+	try {
+		topicTimestamps = JSON.parse(jsonStr);
+	} catch (err) {
+		throw new Error("Unable to parse response as json. Content: " + responseContent);
+	}
 
 	return topicTimestamps;
 }
@@ -139,7 +157,7 @@ async function main() {
 
 		fs.writeFileSync("topic_timestamps.json", JSON.stringify(topicTimestamps));
 	} catch (err) {
-		console.error(err);
+		console.error(err.message);
 	}
 }
 

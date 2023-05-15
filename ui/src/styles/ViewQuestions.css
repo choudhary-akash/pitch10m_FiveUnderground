@@ -61,5 +61,24 @@
 }
 
 .qn-nav-btns {
-	
+	width: 50%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	padding-bottom: 2rem;
+}
+
+.qn-nav-btns button {
+	padding: 0.5rem 1.5rem;
+	border-radius: 1000px;
+	background-color: #3C8DCB;
+	color: white;
+	border: 1px solid #3C8DCB;
+	margin-right: 1rem;
+}
+
+.question-text img {
+	width: 100%;
 }

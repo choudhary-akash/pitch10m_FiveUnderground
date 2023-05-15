@@ -8,6 +8,7 @@ const ViewQuestions = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const [questions, setQuestions] = useState(null)
+	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
 	async function fetchQuestions() {
 		let getQuestionsURL = "http://localhost:8000" + `/api/getQuestions`
@@ -26,6 +27,14 @@ const ViewQuestions = () => {
 		navigate(-1);
 	}
 
+	function previousQn() {
+		setCurrentQuestionIndex(oldQnIndex => oldQnIndex - 1);
+	}
+	
+	function nextQn() {
+		setCurrentQuestionIndex(oldQnIndex => oldQnIndex + 1);
+	}
+
 	return (
 		<div className='view-questions'>
 			<button className='back-btn' onClick={goBack}>
@@ -33,17 +42,19 @@ const ViewQuestions = () => {
 				Back
 			</button>	
 
-			<div className='questions-container'>
-				{
-					questions &&
-					<Question question={questions[0]}></Question>
-				}
-			</div>
+			{
+				questions &&
+				<div>
+					<div className='questions-container'>
+						<Question question={questions[currentQuestionIndex]} questionIndex={currentQuestionIndex} totalQuestions={questions.length}></Question>
+					</div>
 
-			<div className="qn-nav-btns">
-				<button >Previous</button>
-				<button >Next</button>
-			</div>
+					<div className="qn-nav-btns">
+						<button onClick={previousQn} disabled={currentQuestionIndex <= 0}>Previous</button>
+						<button onClick={nextQn} disabled={(currentQuestionIndex + 1) >= questions.length}>Next</button>
+					</div>
+				</div>
+			}
 		</div>
 	)
 }

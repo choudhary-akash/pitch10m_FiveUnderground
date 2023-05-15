@@ -1,0 +1,232 @@
+WEBVTT
+
+00:03.450 --> 00:06.942
+Now, the first two terms that we need to understand are,
+
+00:06.996 --> 00:10.366
+firstly, distance. Now, distance, like it says here,
+
+00:10.388 --> 00:14.074
+is the length of the actual path traveled between the initial
+
+00:14.122 --> 00:17.966
+and final positions. So if I am over here
+
+00:18.068 --> 00:21.486
+and I walk to some other place, take the roads and walk to some
+
+00:21.508 --> 00:25.154
+other place, then distance is how much I walked.
+
+00:25.322 --> 00:28.866
+Even if you look at GPS or even if you look at navigation
+
+00:28.898 --> 00:32.706
+in your phones, that path that they trace out, that length of the path
+
+00:32.738 --> 00:36.790
+that they show you, these many kilometers you need to travel, that is the distance.
+
+00:37.130 --> 00:40.322
+That path may be curved. That path may be circular.
+
+00:40.386 --> 00:43.674
+It can have any shape, but it just tells you from this
+
+00:43.712 --> 00:47.100
+point to this point how much path you actually need to cover.
+
+00:47.630 --> 00:50.870
+The other part to this is called the displacement.
+
+00:51.030 --> 00:54.554
+And displacement is said to be the shortest straight line distance
+
+00:54.682 --> 00:57.774
+directed from the initial position to the final position,
+
+00:57.892 --> 01:01.278
+irrespective of the path. In order to better understand
+
+01:01.364 --> 01:04.698
+this, look at this diagram over here. So suppose this is my
+
+01:04.724 --> 01:07.826
+point A. This is point A, and I need
+
+01:07.848 --> 01:11.170
+to go from this point A all the way to this point
+
+01:11.240 --> 01:14.498
+B. Now, because there are obstacles in between,
+
+01:14.584 --> 01:17.758
+let's assume that there are roads and everything. So I cannot go
+
+01:17.784 --> 01:21.314
+straight from this point to the other. So I go a bit in this direction,
+
+01:21.362 --> 01:25.462
+then I go up, so on, so forth, and I
+
+01:25.516 --> 01:29.254
+come back to this point. This entire yellow
+
+01:29.302 --> 01:33.114
+line, this is the distance, because this is actually the path that I have
+
+01:33.152 --> 01:36.554
+taken. However, the displacement is
+
+01:36.592 --> 01:40.426
+the shortest distance between those two points. And whenever you
+
+01:40.448 --> 01:43.934
+want the shortest distance between these two points, they will
+
+01:43.972 --> 01:47.534
+generally be the straight line connecting them. So this
+
+01:47.572 --> 01:50.894
+yellow line is the distance. The red line is the
+
+01:50.932 --> 01:54.814
+displacement. It's the shortest distance possible. So you immediately
+
+01:54.862 --> 01:58.990
+get an idea over here that the distance cannot
+
+01:59.070 --> 02:03.138
+be less than the displacement. The displacement is the least value
+
+02:03.224 --> 02:06.706
+that the distance can have. Because if I want to go from point A
+
+02:06.728 --> 02:10.054
+to point B, suppose there are no obstacles in between,
+
+02:10.172 --> 02:13.480
+the actual path that I can travel would be just this line.
+
+02:14.170 --> 02:17.910
+In that case, my distance becomes equal to my displacement.
+
+02:18.250 --> 02:21.050
+So displacement is the minimum value.
+
+02:21.200 --> 02:25.146
+Distance will either be that value or it will be greater than that if
+
+02:25.168 --> 02:29.206
+I take any other path. All right, so displacement
+
+02:29.318 --> 02:33.242
+also another important thing. Displacement is a vector quantity.
+
+02:33.386 --> 02:36.606
+Why? Because displacement, since it's in a straight line,
+
+02:36.708 --> 02:40.062
+it also has a defined direction. And because
+
+02:40.116 --> 02:44.250
+of that direction, displacement becomes a vector quantity. But distance,
+
+02:44.410 --> 02:47.666
+distance is a scalar quantity. That is why if you look at
+
+02:47.688 --> 02:51.714
+this path, this entire path has no fixed direction for
+
+02:51.752 --> 02:55.554
+this region. Up till this region, I'm moving in that side.
+
+02:55.672 --> 02:59.414
+Then I move up, then I move again to that side, I move down,
+
+02:59.452 --> 03:02.402
+and so on. So my direction is constantly changing.
+
+03:02.546 --> 03:06.162
+So for distance, you do not have a defined direction, hence it's a scalar.
+
+03:06.226 --> 03:09.666
+But for displacement, because it's a straight line and that direction
+
+03:09.698 --> 03:13.530
+is maintained throughout, you consider displacement to be a vector.
+
+03:14.030 --> 03:17.834
+All right? So I hope the concepts of distance and displacement are clear, because these
+
+03:17.872 --> 03:19.260
+will be used quite often.
+
+03:20.910 --> 03:24.474
+Now, another example to properly illustrate distance
+
+03:24.522 --> 03:28.154
+and displacement. So over here, I have a particle
+
+03:28.202 --> 03:31.566
+that moves like it says it moves over the arc PQ on
+
+03:31.588 --> 03:34.800
+a circle of radius, capital R. So over here,
+
+03:36.290 --> 03:40.226
+this is the path actually taken. So if this is the
+
+03:40.248 --> 03:43.026
+path through which the particle moves, the points that it needs to go is from
+
+03:43.048 --> 03:46.306
+point P all the way to point Q. So this
+
+03:46.328 --> 03:49.894
+is the actual path taken, which means the distance is
+
+03:49.932 --> 03:53.094
+the arc length PQ. You can even figure out if
+
+03:53.132 --> 03:57.458
+theta is given and the radius is given R. You know, this PQ
+
+03:57.554 --> 04:01.434
+is just equal to R theta. You can even figure that out.
+
+04:01.632 --> 04:05.066
+That is the distance traveled. And because you're going from
+
+04:05.088 --> 04:08.714
+point P to point Q, you can even figure out what the
+
+04:08.752 --> 04:11.994
+displacement is going to be. The displacement is
+
+04:12.032 --> 04:15.758
+going to be this line over here. Now, that is not the path you
+
+04:15.764 --> 04:18.926
+have taken, but that is the shortest distance between the two because
+
+04:18.948 --> 04:22.602
+it's a straight line connecting those two points. So displacement
+
+04:22.666 --> 04:25.850
+is a straight line PQ. See? It's still PQ.
+
+04:25.930 --> 04:29.662
+In both of these cases, it's PQ because it's the same points you're going
+
+04:29.796 --> 04:33.278
+to you're going from one point to the other is the same points.
+
+04:33.444 --> 04:37.106
+However, the path taken ensures the distance becomes the arc,
+
+04:37.218 --> 04:39.720
+and displacement becomes the straight line.
+
+04:40.730 --> 04:41.140
+All right.
