@@ -35,3 +35,7 @@
 	flex-wrap: wrap;
 	gap: 2rem;
 }
+
+#video-list * {
+	cursor: pointer;
+}

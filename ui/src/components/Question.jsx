@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const Question = ({ question, questionIndex, totalQuestions }) => {
 	const navigate = useNavigate();
+	const [selectedAnswer, setSelectedAnswer] = useState(null);
+	const [isCorrect, setIsCorrect] = useState(null);
 
 	console.log(question);
 
@@ -12,6 +14,17 @@ const Question = ({ question, questionIndex, totalQuestions }) => {
 				question: question
 			}
 		});
+	}
+
+	useEffect(() => {
+		setSelectedAnswer(null);
+		setIsCorrect(null);
+	}, [question]);
+
+	function selectAnswer(optionIndex) {
+		setSelectedAnswer(optionIndex);
+		console.log()
+		setIsCorrect(optionIndex === Number(question.correctAnswer));
 	}
 
 	return (
@@ -28,9 +41,12 @@ const Question = ({ question, questionIndex, totalQuestions }) => {
 			<div className='options-contaier'>
 				{
 					question.answerOptions.map((option, index) => 
-						<label className='option'>
-							<input type='radio' name='selected-answer' value={index + 1} />
-							<span dangerouslySetInnerHTML={{ __html: option}}></span>
+						<label className={['option', (selectedAnswer - 1) !== index ? '' : (isCorrect === true) ? 'correct-answer' : 'wrong-answer'].join(' ')}>
+							<input type='radio' name='selected-answer' value={index + 1} 
+								onChange={() => { selectAnswer(index+1) }} disabled={selectedAnswer != null} 
+								checked={selectedAnswer && ((selectedAnswer - 1) == index)}
+							/>
+							<span dangerouslySetInnerHTML={{ __html: option}} ></span>
 						</label>
 					)
 				}

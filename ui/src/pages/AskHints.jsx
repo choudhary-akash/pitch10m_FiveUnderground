@@ -2,13 +2,14 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import '../styles/AskHints.css';
 import { chat_completion } from '../util/chatgpt.js';
-import Loader from '../components/Loader';
 import { ThreeDots } from 'react-loader-spinner';
 
 const AskHints = () => {
 	const [conversation, setConversation] = useState([]);
+	const [showSolution, setShowSolution] = useState(false);
+	const [solution, setSolution] = useState('');
 	const navigate = useNavigate();
-	const [isLoading, setIsAsking] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 	const msgListRef = useRef(null);
 	const location = useLocation();
 	const inputRef = useRef(null);
@@ -23,7 +24,7 @@ const AskHints = () => {
 
 		console.log(input);
 
-		setIsAsking(true);
+		setIsLoading(true);
 
 		setConversation(oldConversation => [...oldConversation, {role: 'user', content: input}]);
 
@@ -37,13 +38,26 @@ const AskHints = () => {
 	useEffect(() => {
 		msgListRef.current.scrollTo(0, msgListRef.current.scrollHeight);
 
+		// After 10 user prompts, show the user the correct solution 
+		if ((conversation.length - 3) > 20) {
+			setShowSolution(true);
+			setIsLoading(false);
+			return;
+		}
+
 		if (conversation[conversation.length - 1]?.role === 'user') {
 			console.log('Calling chat gpt...');
 			chat_completion(conversation, { max_tokens: 1000 })
 			.then(response => {
 				setConversation(oldConversation => [...oldConversation, response.message]);
-				setIsAsking(false);
+				setIsLoading(false);
 				console.log('Set is asking to true...');
+			})
+			.catch(err => {
+				// toast("Something went wrong!");
+				console.log(err.message);
+				setIsLoading(false);
+				setShowSolution(true);
 			});
 		}
 	}, [conversation]);
@@ -76,7 +90,14 @@ const AskHints = () => {
 		];
 
 		setConversation(startingConversation);
+
+		let solution = `The correct answer is ${correctAnswer} \n\nThe solution is: ${question.solution}`;
+		setSolution(solution);
 	}, []);
+
+	useEffect(() => {
+		msgListRef.current.scrollTo(0, msgListRef.current.scrollHeight);
+	}, [solution]);
 
 	return (
 		<div className='conversation-container'>
@@ -116,8 +137,7 @@ const AskHints = () => {
 							<div className={`message ${message.role}-message`}>
 								<img src={message.role == 'assistant' ? '/assets/chatbot-outline.svg' : '/assets/student-icon.svg'} className={`${message.role}-icon`} alt="Bot Icon" />
 								<div>
-									<p className='question-text'>
-										{message.content}
+									<p className='question-text' dangerouslySetInnerHTML={{ __html: message.content }}>
 									</p>
 								</div>
 							</div>
@@ -143,11 +163,33 @@ const AskHints = () => {
 						</div>
 					</div>
 				}
+
+				{
+					showSolution && 
+					<div className="message-container">
+						<div className="message">
+							<img src="/assets/chatbot-outline.svg" className='assistant-icon' alt="Bot Icon" />
+
+							<div>
+								<p className='question-text' dangerouslySetInnerHTML={{ __html: solution }}>
+								</p>
+							</div>
+						</div>
+
+						<div className="message">
+							<img src="/assets/chatbot-outline.svg" className='assistant-icon' alt="Bot Icon" />
+
+							<div>
+								<p style={{fontWeight: 600}}>Your session has ended. I hope I was able to help you with your problem.</p>
+							</div>
+						</div>
+					</div>
+				}
 			</div>
 
 			<div className='input-container'>
 				<form onSubmit={handleInput}>
-					<input type="text" disabled={isLoading} className='ask-input' placeholder='Send message' ref={inputRef} />
+					<input type="text" style={{ visibility: showSolution ? 'hidden' : 'visible'}} disabled={isLoading || showSolution} className='ask-input' placeholder='Send message' ref={inputRef} />
 				</form>
 			</div>
 		</div>
