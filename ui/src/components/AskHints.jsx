@@ -96,7 +96,7 @@ const AskHints = ({ question, setOpenHints }) => {
 				</div>
 				<div className="message-container">
 					<div className="message assistant-message">
-						<img src="/assets/chatbot-outline.svg" className='assistant-icon' alt="Bot Icon" style={{visibility: 'hidden'}} />
+						<img src="/assets/chatbot-outline.svg" className='assistant-icon' alt="Bot Icon" />
 						<div>
 							<h3 style={{marginTop: 0}}>Question</h3>
 							<p className='question-text' dangerouslySetInnerHTML={{ __html: question.questionText} }>

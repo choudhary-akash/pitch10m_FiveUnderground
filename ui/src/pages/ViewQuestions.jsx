@@ -63,14 +63,16 @@ const ViewQuestions = () => {
 	} else {
 		return (
 			<div className='view-questions'>
-				<button className='back-btn' onClick={goBack}>
-					<img src="/assets/left-arrow.svg" alt="Left Arrow Icon" />
-					Back
-				</button>	
-	
 				{
 					questions &&
-					<div>
+					<>
+						<div>
+							<button className='back-btn' onClick={goBack}>
+								<img src="/assets/left-arrow.svg" alt="Left Arrow Icon" />
+								Back
+							</button>	
+						</div>
+
 						<div className='questions-container'>
 							<Question
 								questions={questions} 
@@ -80,12 +82,12 @@ const ViewQuestions = () => {
 								setOpenHints={setOpenHints}
 							></Question>
 						</div>
-	
+
 						<div className="qn-nav-btns">
 							<button onClick={previousQn} disabled={currentQuestionIndex <= 0}>Previous</button>
 							<button onClick={nextQn} disabled={(currentQuestionIndex + 1) >= questions.length}>Next</button>
 						</div>
-					</div>
+					</>
 				}
 			</div>
 		)

@@ -1,5 +1,6 @@
 #video-view {
 	margin-left: 5%;
+	height: 100%;
 }
 
 .video-container {
@@ -12,6 +13,7 @@
 video {
 	height: 100%;
 	width: 70%;
+	background-color: black;
 }
 
 .timeline {
@@ -65,4 +67,28 @@ video {
 	padding: 3px 5px;
 	background-color: #F4C9FF;
 	color: #9900DF;
+}
+
+.video-title {
+	font-size: large;
+	font-weight: 600;
+	margin: 1.5rem 0 0.75rem 0;
+}
+
+.video-topic {
+	color: #6E7191;
+	font-size: 1rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.video-topic span {
+	font-weight: 500;
+}
+
+.video-subject-icon {
+	height: 2rem;
+	width: auto;
 }
