@@ -10,6 +10,22 @@
 .video-card .video-thumbnail {
 	overflow: hidden;
 	height: 70%;
+	position: relative;
+}
+
+.video-duration {
+	position: absolute;
+	padding: 0.3rem 0.5rem;
+	border-radius: 500px;
+	font-size: 0.75rem;
+	font-weight: 400;
+	font-family: 'Poppins', 'Montserrat', sans-serif;
+	color: white;
+	background: rgba(20, 20, 43, 0.8);;
+	bottom: 10px;
+	width: fit-content;
+	right: 1rem;
+	display: inline-block;
 }
 
 .video-card .video-description {
