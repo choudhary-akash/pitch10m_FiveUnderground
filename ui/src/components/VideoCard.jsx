@@ -1,8 +1,10 @@
 import React from 'react';
 import '../styles/VideoCard.css';
-import { redirect } from 'react-router-dom';
+import moment, { duration } from 'moment/moment';
 
 const VideoCard = ({ video }) => {
+	const videoDuration = moment.utc(video.duration * 1000).format('mm:ss');
+
 	function redirectToVideo() {
 		document.location.href = `/videos/${video.cmsVideoId}`;
 	}
@@ -11,6 +13,7 @@ const VideoCard = ({ video }) => {
 		<div className='video-card' onClick={redirectToVideo}>
 			<div className='video-thumbnail'>
 				<img src={video.thumbnailUrl} alt="" />
+				<div className='video-duration'>{videoDuration}</div>
 			</div>
 			<div className='video-description'>
 				<div className='view-count'>
