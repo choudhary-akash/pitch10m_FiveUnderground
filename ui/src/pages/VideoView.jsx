@@ -57,8 +57,8 @@ const VideoView = () => {
 					<div className='timeline-topics'>
 						{
 							video?.timeline &&
-							video?.timeline?.map(timelineEl => 
-								<div className='timeline-topic'>
+							video?.timeline?.map((timelineEl, index) => 
+								<div className='timeline-topic' key={index}>
 									<span className='topic-name'>
 										{timelineEl.topic}
 									</span>
