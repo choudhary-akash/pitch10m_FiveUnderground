@@ -14,11 +14,13 @@ const VideoView = () => {
 	let getVideoAPI = "http://localhost:8000" + `/api/videos/${cmsVideoId}`;
 
 	useEffect(() => {
-		axios.get(getVideoAPI)
-		.then(res => {
-			setVideo(res.data.data);
-		});
-	}, []);
+		if (video == null) {
+			axios.get(getVideoAPI)
+			.then(res => {
+				setVideo(res.data.data);
+			});
+		}
+	}, [video]);
 
 	function jumpToTime(seconds) {
 		videoRef.current.currentTime = seconds;
@@ -37,6 +39,22 @@ const VideoView = () => {
 				subtopicId: video.subtopicId
 			}
 		});
+	}
+
+	function getSubjectIcon(subjectId) {
+		switch(subjectId) {
+			case 1:
+				return '/assets/physics-icon.svg';
+
+			case 2:
+				return '/assets/chemistry-icon.svg';
+
+			case 3:
+				return '/assets/maths-icon.svg';
+		
+			default:
+				return '';
+		}
 	}
 	
 
@@ -72,6 +90,13 @@ const VideoView = () => {
 					<div className='generate-qns-container'>
 						<button onClick={() => goToQuestionsPage()}>Generate Questions</button>
 					</div>
+				</div>
+			</div>
+			<div className='video-details'>
+				<div className='video-title'>{video?.videoName}</div>
+				<div className='video-topic'>
+					<img src={getSubjectIcon(video?.subjectId)} alt="" className='video-subject-icon' />
+					<span>{video?.topicName}</span>
 				</div>
 			</div>
 		</div>
