@@ -1,30 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-const Question = ({ question, questionIndex, totalQuestions }) => {
-	const navigate = useNavigate();
-	const [selectedAnswer, setSelectedAnswer] = useState(null);
-	const [isCorrect, setIsCorrect] = useState(null);
-
-	console.log(question);
-
-	function goToHints() {
-		navigate("/getHints", {
-			state: {
-				question: question
-			}
-		});
-	}
+const Question = ({ questions, questionIndex, totalQuestions, setSelectedAnswer, setOpenHints }) => {
+	const [question, setQuestion] = useState(null);
 
 	useEffect(() => {
-		setSelectedAnswer(null);
-		setIsCorrect(null);
-	}, [question]);
+		setQuestion(questions[questionIndex]);
+	}, [questions, questionIndex]);
 
-	function selectAnswer(optionIndex) {
-		setSelectedAnswer(optionIndex);
-		console.log()
-		setIsCorrect(optionIndex === Number(question.correctAnswer));
+	function isOptionSelected(optionIndex) {
+		return question.selectedAnswer != null && ((question.selectedAnswer - 1) == optionIndex);
+	}
+
+	if (question == null) {
+		return <></>;
 	}
 
 	return (
@@ -41,11 +30,16 @@ const Question = ({ question, questionIndex, totalQuestions }) => {
 			<div className='options-contaier'>
 				{
 					question.answerOptions.map((option, index) => 
-						<label className={['option', (selectedAnswer - 1) !== index ? '' : (isCorrect === true) ? 'correct-answer' : 'wrong-answer'].join(' ')}>
+						<label 
+							key={index}
+							className={['option', !isOptionSelected(index) ? '' : (question.isCorrect === true) ? 'correct-answer' : 'wrong-answer'].join(' ')}>
+							
 							<input type='radio' name='selected-answer' value={index + 1} 
-								onChange={() => { selectAnswer(index+1) }} disabled={selectedAnswer != null} 
-								checked={selectedAnswer && ((selectedAnswer - 1) == index)}
+								onChange={() => { setSelectedAnswer(questionIndex, index+1) }} 
+								disabled={question.selectedAnswer != null} 
+								checked={isOptionSelected(index)}
 							/>
+
 							<span dangerouslySetInnerHTML={{ __html: option}} ></span>
 						</label>
 					)
@@ -53,7 +47,7 @@ const Question = ({ question, questionIndex, totalQuestions }) => {
 			</div>
 			<div className='hints-suggestion'>
 				Need help with this problem? 
-				<button className='hints-button' onClick={goToHints}>
+				<button className='hints-button' onClick={() => { setOpenHints(true) }}>
 					<img src="/assets/head-idea.svg" alt="Thinking head icon" />
 					<span>Ask AI</span>
 				</button>

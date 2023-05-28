@@ -4,7 +4,6 @@ import { redirect } from 'react-router-dom';
 
 const VideoCard = ({ video }) => {
 	function redirectToVideo() {
-		console.log("Redirecting to video...");
 		document.location.href = `/videos/${video.cmsVideoId}`;
 	}
 

@@ -4,35 +4,23 @@ import '../styles/AskHints.css';
 import { chat_completion } from '../util/chatgpt.js';
 import { ThreeDots } from 'react-loader-spinner';
 
-const AskHints = () => {
+const AskHints = ({ question, setOpenHints }) => {
 	const [conversation, setConversation] = useState([]);
 	const [showSolution, setShowSolution] = useState(false);
 	const [solution, setSolution] = useState('');
-	const navigate = useNavigate();
 	const [isLoading, setIsLoading] = useState(false);
 	const msgListRef = useRef(null);
-	const location = useLocation();
 	const inputRef = useRef(null);
-
-	const { question } = location.state;
 
 	async function handleInput(e) {
 		e.preventDefault();
 		let inputEl = inputRef.current;
-
 		let input = inputEl.value;
 
-		console.log(input);
-
 		setIsLoading(true);
-
 		setConversation(oldConversation => [...oldConversation, {role: 'user', content: input}]);
 
 		inputEl.value = '';
-	}
-
-	function goBack() {
-		navigate(-1);
 	}
 
 	useEffect(() => {
@@ -46,16 +34,14 @@ const AskHints = () => {
 		}
 
 		if (conversation[conversation.length - 1]?.role === 'user') {
-			console.log('Calling chat gpt...');
+			// Calling chat gpt...
 			chat_completion(conversation, { max_tokens: 1000 })
 			.then(response => {
 				setConversation(oldConversation => [...oldConversation, response.message]);
 				setIsLoading(false);
-				console.log('Set is asking to true...');
 			})
 			.catch(err => {
-				// toast("Something went wrong!");
-				console.log(err.message);
+				console.error(err.message);
 				setIsLoading(false);
 				setShowSolution(true);
 			});
@@ -77,7 +63,7 @@ const AskHints = () => {
 		let startingConversation = [
 			{
 				role: "system",
-				content: "You are a problem solving assistant. Your answers should be around 5 sentences long. You should not provide the user the solution directly even if they ask for it. You should ask the user for their approach and help them understand the correct approach."
+				content: "You are a problem solving assistant. Your answers should be maximum 5 sentences long. If your answers contain any mathematical or scientific equations, then you should use MathML for it. You should never provide the solution to the user directly even if they ask for it. You should ask the user for their approach and help them understand the correct approach. Never explain the full solution in one single answer. Break down the concepts into multiple responses and keep asking the user if they've understood what you told them so far."
 			},
 			{
 				role: "user",
@@ -103,14 +89,14 @@ const AskHints = () => {
 		<div className='conversation-container'>
 			<div className="message-list" ref={msgListRef}>
 				<div style={{margin: '0 10%'}}>
-					<button className='back-btn' onClick={goBack}>
+					<button className='back-btn' onClick={() => { setOpenHints(false) }}>
 						<img src="/assets/left-arrow.svg" alt="Left Arrow Icon" />
 						Back To Question
 					</button>
 				</div>
 				<div className="message-container">
 					<div className="message assistant-message">
-						<img src="/assets/chatbot-outline.svg" className='assistant-icon' alt="Bot Icon" />
+						<img src="/assets/chatbot-outline.svg" className='assistant-icon' alt="Bot Icon" style={{visibility: 'hidden'}} />
 						<div>
 							<h3 style={{marginTop: 0}}>Question</h3>
 							<p className='question-text' dangerouslySetInnerHTML={{ __html: question.questionText} }>

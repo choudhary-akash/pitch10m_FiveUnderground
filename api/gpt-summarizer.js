@@ -43,8 +43,6 @@ async function chat_completion(prompt, config) {
 	// Add new prompt to the existing conversation
 	chat_messages.push({role: 'user', content: prompt});
 
-	console.log("Prompt length: " + prompt.length);
-
 	// Call OpenAI API for chat completion
 	const response = await axios.post(CHAT_COMPLETION_URL, {
 		model: "gpt-3.5-turbo",
@@ -107,7 +105,6 @@ async function feedTranscript() {
 				transcriptBuffer += "\n\nWait for the next parts.";
 			}
 
-			console.log(`Feeding Part ${partCount}...`);
 			// await chat_completion(transcriptBuffer, {
 			// 	maxTokens: 50
 			// });
@@ -126,7 +123,6 @@ async function summarize() {
 	// Instruct chat gpt to summarize the previously fed transcript
 	const prompt = `Read and understand the above timestamped text in .srt format shared with you in parts and then distribute them into broad topics in one liners and along with the starting timestamp of the topic. In your answer, only send a json array of objects where each object contains two fields - 'topic' and 'timestamp'. Send the topics as string and the timestamps as string in HH:MM:SS.SSS format. Don't include anything else in your response. `;
 
-	console.log("Fetching topics from transcript...")
 	let completionRes = await chat_completion(prompt, {maxTokens: 250});
 
 	let responseContent = String(completionRes.choices[0].message.content);
