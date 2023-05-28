@@ -1,6 +1,9 @@
 .view-questions {
 	margin: 2rem 5%;
 	background-color: #fcfcfc;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
 }
 
 .question-container {
@@ -81,6 +84,7 @@
 	justify-content: flex-end;
 	align-items: center;
 	padding-bottom: 2rem;
+	flex: auto;
 }
 
 .qn-nav-btns button {
@@ -90,7 +94,16 @@
 	color: white;
 	border: 1px solid #3C8DCB;
 	margin-right: 1rem;
+	margin-top: auto;
 	cursor: pointer;
+	font-weight: 600;
+}
+
+.qn-nav-btns button:disabled {
+	background-color: transparent;
+	cursor: default;
+	color: rgba(20, 20, 43, 0.5);
+	border: none;
 }
 
 .question-text img {
