@@ -36,6 +36,7 @@ video {
 .timeline .timeline-topics {
 	background-color: #F7F7FC;
 	flex: 1;
+	font-weight: 500;
 }
 
 .generate-qns-container {
@@ -67,6 +68,7 @@ video {
 	padding: 3px 5px;
 	background-color: #F4C9FF;
 	color: #9900DF;
+	font-weight: 600;
 }
 
 .video-title {
